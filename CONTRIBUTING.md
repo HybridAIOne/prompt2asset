@@ -17,6 +17,8 @@ npm run build    # Produktionsbuild (Typecheck + Vite)
 npm run preview  # Vorschau des dist/-Builds
 ```
 
+**GitHub Pages:** Der Deploy-Workflow baut mit `npm run build -- --base=/<Repository-Name>/` (siehe `.github/workflows/pages.yml`).
+
 ## Pull Requests
 
 - Ein Issue zu eröffnen ist willkommen, aber für kleine Fixes nicht Pflicht.

@@ -1,4 +1,5 @@
 import { useCallback, useState } from "react";
+import { ApiKeySessionBanner } from "./components/ApiKeySessionBanner";
 import { PreviewCanvas } from "./components/PreviewCanvas";
 import { PromptComposer } from "./components/PromptComposer";
 import {
@@ -106,6 +107,7 @@ export default function App() {
             Gemini · Vorschau
           </span>
         </header>
+        <ApiKeySessionBanner />
         <div className="app__stage">
           <PreviewCanvas
             srcDoc={srcDoc}

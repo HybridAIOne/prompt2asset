@@ -8,6 +8,8 @@
 
 **Lizenz:** [MIT](LICENSE) · **Changelog:** [CHANGELOG.md](CHANGELOG.md) · **Mitwirken:** [CONTRIBUTING.md](CONTRIBUTING.md) · **Repo:** [HybridAIOne/prompt2asset](https://github.com/HybridAIOne/prompt2asset)
 
+**Live (GitHub Pages):** [hybridaione.github.io/prompt2asset](https://hybridaione.github.io/prompt2asset/) — öffentlicher Build **ohne** eingetragenen Key; zum Ausprobieren Gemini-Key im gelben **Demo-Banner** für diese Browser-Sitzung speichern.
+
 ## Features
 
 - Mehrzeiliger Prompt, optional **Beispiel-Chips** (Spiele & Didaktik)
@@ -15,6 +17,7 @@
 - **Teilen:** Direktlink (`asset-viewer.html#d=…`, LZ-Kompression), Iframe-Snippet, Roh-HTML kopieren
 - **Verlauf** der letzten Artefakte (lokal im Browser)
 - Markdown/Code-Fences in der Modellantwort werden bereinigt
+- **GitHub Pages:** Workflow baut mit `base=/Repository-Name/`; API-Key optional per **Sitzung** im Browser (kein Secret im Repo)
 
 ## Voraussetzungen
 
@@ -60,8 +63,15 @@ Die Vorschau nutzt `sandbox="allow-scripts allow-pointer-lock"` **ohne** `allow-
 - [Security-Meldungen](SECURITY.md)  
 - [Mitwirken](CONTRIBUTING.md)
 
+## GitHub Pages
+
+- Workflow: [.github/workflows/pages.yml](.github/workflows/pages.yml) (Deploy bei Push auf `main`).
+- **Einmalig im Repository:** *Settings* → *Pages* → *Build and deployment* → **Source: GitHub Actions**.
+- Die App liegt unter `https://<USER>.github.io/<REPO>/` (bei dir z. B. [hybridaione.github.io/prompt2asset](https://hybridaione.github.io/prompt2asset/)).
+- Der öffentliche Build enthält **keinen** Gemini-Key. Nutzer können im **Demo-Banner** einen Key nur für die **aktuelle Browser-Sitzung** setzen (`sessionStorage`); es wird nicht an unsere Infrastruktur gesendet, nur an Google im API-Call.
+
 ## GitHub
 
 Empfohlene **Topics:** `gemini`, `vite`, `react`, `iframe`, `sandbox`, `llm`, `html-generation`, `prompt`
 
-Optional **Release** [v0.1.0](https://github.com/HybridAIOne/prompt2asset/releases) anlegen (siehe [CHANGELOG.md](CHANGELOG.md)).
+Optional **Releases** (z. B. v0.1.1) anlegen — siehe [CHANGELOG.md](CHANGELOG.md).

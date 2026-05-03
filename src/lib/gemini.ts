@@ -1,5 +1,6 @@
 import { FinishReason, GoogleGenAI } from "@google/genai";
 import { normalizeHtmlDocument } from "./cleanModelHtml";
+import { resolveGeminiApiKey } from "./geminiSessionKey";
 
 const SYSTEM_INSTRUCTION = `Gib NUR ein vollständiges HTML-Dokument zurück. Kein Markdown, kein Erklärtext davor oder danach.
 
@@ -44,10 +45,10 @@ export async function generateHtmlDocument(
   userPrompt: string,
   options?: GenerateHtmlOptions,
 ): Promise<string> {
-  const apiKey = import.meta.env.VITE_GEMINI_API_KEY;
+  const apiKey = resolveGeminiApiKey();
   if (!apiKey?.trim()) {
     throw new Error(
-      "VITE_GEMINI_API_KEY fehlt. Kopiere .env.example nach .env und trage deinen Schlüssel von https://aistudio.google.com/apikey ein.",
+      "Kein Gemini API-Key: lokal .env mit VITE_GEMINI_API_KEY anlegen, oder auf der gehosteten Demo den Key für diese Browser-Sitzung eintragen (wird nicht an uns gesendet). Schlüssel: https://aistudio.google.com/apikey",
     );
   }
 
