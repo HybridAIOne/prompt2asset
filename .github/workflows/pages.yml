@@ -1,11 +1,14 @@
 # Deployet die App auf GitHub Pages (Projekt-URL: /<repo>/).
-# Einmalig unter Repo Settings → Pages → Build and deployment → Source: GitHub Actions wählen.
+# Einmalig: Settings → Pages → Source: GitHub Actions.
+# Wichtig: Settings → Actions → General → Workflow permissions →
+#   "Read and write permissions" (sonst schlägt der Deploy-Schritt oft fehl).
 
 name: Deploy GitHub Pages
 
 on:
   push:
     branches: [main]
+  workflow_dispatch:
 
 permissions:
   contents: read
@@ -19,6 +22,8 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
       - uses: actions/checkout@v4
 
@@ -41,9 +46,13 @@ jobs:
   deploy:
     needs: build
     runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - id: deployment
+      - name: Deploy to GitHub Pages
+        id: deployment
         uses: actions/deploy-pages@v4

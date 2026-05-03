@@ -65,8 +65,9 @@ Die Vorschau nutzt `sandbox="allow-scripts allow-pointer-lock"` **ohne** `allow-
 
 ## GitHub Pages
 
-- Workflow: [.github/workflows/pages.yml](.github/workflows/pages.yml) (Deploy bei Push auf `main`).
+- Workflow: [.github/workflows/pages.yml](.github/workflows/pages.yml) (Deploy bei Push auf `main` oder manuell „Run workflow“).
 - **Einmalig im Repository:** *Settings* → *Pages* → *Build and deployment* → **Source: GitHub Actions**.
+- **Wenn der Deploy-Job rot ist:** *Settings* → *Actions* → *General* → **Workflow permissions** → **Read and write permissions** aktivieren (und ggf. „Allow GitHub Actions to create and approve pull requests“ nur wenn ihr es braucht). Ohne Schreibrechte kann `deploy-pages` die Seite nicht veröffentlichen.
 - Die App liegt unter `https://<USER>.github.io/<REPO>/` (bei dir z. B. [hybridaione.github.io/prompt2asset](https://hybridaione.github.io/prompt2asset/)).
 - Der öffentliche Build enthält **keinen** Gemini-Key. Nutzer können im **Demo-Banner** einen Key nur für die **aktuelle Browser-Sitzung** setzen (`sessionStorage`); es wird nicht an unsere Infrastruktur gesendet, nur an Google im API-Call.
 
