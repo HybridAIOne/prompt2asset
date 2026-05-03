@@ -2,13 +2,11 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Node](https://img.shields.io/badge/node-%3E%3D20-brightgreen)](package.json)
+[![CI](https://github.com/HybridAIOne/prompt2asset/actions/workflows/ci.yml/badge.svg)](https://github.com/HybridAIOne/prompt2asset/actions/workflows/ci.yml)
 
 **prompt2asset** ist eine kleine Web-UI: Du beschreibst in einem Prompt, was erscheinen soll — ein **Gemini**-Modell liefert **ein vollständiges HTML-Dokument** (inline CSS/JS, optional Chart.js / D3 / Mermaid per CDN laut System-Prompt). Das Ergebnis wird in einem **sandboxed** `iframe` als `srcdoc` angezeigt (gleiches Muster wie serverseitig HTML erzeugen und eingebettet anzeigen).
 
-**Lizenz:** [MIT](LICENSE) · **Changelog:** [CHANGELOG.md](CHANGELOG.md) · **Mitwirken:** [CONTRIBUTING.md](CONTRIBUTING.md)
-
-<!-- Nach dem Anlegen des GitHub-Repos: `DEIN_USER` durch deinen Account ersetzen. -->
-<!-- [![CI](https://github.com/DEIN_USER/prompt2asset/actions/workflows/ci.yml/badge.svg)](https://github.com/DEIN_USER/prompt2asset/actions) -->
+**Lizenz:** [MIT](LICENSE) · **Changelog:** [CHANGELOG.md](CHANGELOG.md) · **Mitwirken:** [CONTRIBUTING.md](CONTRIBUTING.md) · **Repo:** [HybridAIOne/prompt2asset](https://github.com/HybridAIOne/prompt2asset)
 
 ## Features
 
@@ -62,8 +60,8 @@ Die Vorschau nutzt `sandbox="allow-scripts allow-pointer-lock"` **ohne** `allow-
 - [Security-Meldungen](SECURITY.md)  
 - [Mitwirken](CONTRIBUTING.md)
 
-## GitHub (nach dem ersten Push)
+## GitHub
 
 Empfohlene **Topics:** `gemini`, `vite`, `react`, `iframe`, `sandbox`, `llm`, `html-generation`, `prompt`
 
-Optional **GitHub Release** `v0.1.0` anlegen und den CI-Badge in dieser README aktivieren (Kommentar oben entfernen, `DEIN_USER` einsetzen).
+Optional **Release** [v0.1.0](https://github.com/HybridAIOne/prompt2asset/releases) anlegen (siehe [CHANGELOG.md](CHANGELOG.md)).
