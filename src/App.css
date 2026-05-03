@@ -1,0 +1,205 @@
+.app {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse 120% 80% at 50% -20%, rgba(62, 207, 142, 0.12), transparent),
+    var(--bg-deep);
+}
+
+.app__main {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  /* Nur Header/Marginalien einrücken — die Stage bricht für die Vorschau aus */
+  --app-inline: clamp(0.65rem, 2.2vw, 1.1rem);
+  padding: 1rem var(--app-inline) 0.75rem;
+}
+
+.app__stage {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  margin-inline: calc(-1 * var(--app-inline));
+  width: calc(100% + 2 * var(--app-inline));
+  max-width: none;
+  box-sizing: border-box;
+}
+
+.app__composer-float {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.app__composer-panel {
+  position: absolute;
+  left: 50%;
+  bottom: 2.35rem;
+  pointer-events: auto;
+  transform: translateX(-50%);
+  width: min(65%, 52rem);
+  max-width: min(65%, 52rem);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+  background: var(--bg-panel);
+  box-shadow:
+    0 0 0 1px rgba(0, 0, 0, 0.25),
+    0 12px 40px -8px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+}
+
+.app__composer-chrome {
+  flex: 0 0 auto;
+  display: grid;
+  grid-template-columns: minmax(2rem, 1fr) auto minmax(2rem, 1fr);
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.5rem 0.65rem;
+  background: var(--bg-elevated);
+  border-bottom: 1px solid var(--border);
+}
+
+.app__composer-chrome-actions {
+  justify-self: start;
+}
+
+.app__composer-chrome-trail {
+  justify-self: end;
+  width: 1.75rem;
+  height: 1.75rem;
+  flex-shrink: 0;
+}
+
+.app__composer-chrome-title-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.15rem;
+  min-width: 0;
+  text-align: center;
+}
+
+.app__composer-chrome-title {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  letter-spacing: 0.02em;
+}
+
+.app__composer-chrome-hint {
+  font-size: 0.62rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  opacity: 0.85;
+  max-width: 14rem;
+  line-height: 1.25;
+}
+
+/* Fenster-Steuerung: ein Control, Bedeutung über Form (+ Tooltip), nicht Ampel-Farben. */
+.app__composer-winbtn {
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: 50%;
+  padding: 0;
+  border: 1px solid var(--border);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  background: var(--bg-panel);
+  color: var(--text-muted);
+  cursor: pointer;
+  transition:
+    background 0.12s ease,
+    border-color 0.12s ease,
+    color 0.12s ease;
+}
+
+.app__composer-winbtn:hover:not(:disabled) {
+  border-color: rgba(62, 207, 142, 0.35);
+  color: var(--accent);
+  background: rgba(62, 207, 142, 0.08);
+}
+
+.app__composer-winbtn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.app__composer-winbtn:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--bg-deep), 0 0 0 4px var(--accent);
+}
+
+.app__composer-winbtn-dash {
+  display: block;
+  width: 9px;
+  height: 2px;
+  border-radius: 1px;
+  background: currentColor;
+}
+
+.app__composer-winbtn-icon {
+  width: 14px;
+  height: 14px;
+  display: block;
+}
+
+.app__composer-body {
+  min-width: 0;
+}
+
+.app__composer-body .composer {
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  background: var(--bg-panel);
+}
+
+.app__header {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.75rem;
+  padding: 0 0.25rem;
+}
+
+.app__title {
+  margin: 0;
+  font-size: 1.125rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.app__badge {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 500;
+  color: var(--accent);
+  background: var(--accent-dim);
+  border: 1px solid rgba(62, 207, 142, 0.35);
+  padding: 0.2rem 0.5rem;
+  border-radius: 999px;
+}
+
+@media (max-width: 640px) {
+  .app__main {
+    --app-inline: 0.45rem;
+    padding: 0.75rem var(--app-inline) 0.65rem;
+  }
+
+  .app__composer-panel {
+    width: min(96%, 52rem);
+    max-width: 96%;
+  }
+}

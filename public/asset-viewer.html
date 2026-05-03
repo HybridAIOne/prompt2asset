@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex,nofollow" />
+    <title>prompt2asset — geteiltes Artefakt</title>
+    <style>
+      html,
+      body {
+        margin: 0;
+        height: 100%;
+        background: #0f1419;
+      }
+      body {
+        display: flex;
+        flex-direction: column;
+        min-height: 100%;
+      }
+      #err {
+        margin: 0;
+        padding: 1rem 1.25rem;
+        color: #f87171;
+        font:
+          0.9rem/1.45 system-ui,
+          sans-serif;
+      }
+      #frame {
+        flex: 1;
+        width: 100%;
+        min-height: 0;
+        border: 0;
+        background: #fff;
+      }
+    </style>
+  </head>
+  <body>
+    <p id="err" hidden></p>
+    <iframe id="frame" title="Artefakt" sandbox="allow-scripts allow-pointer-lock" hidden></iframe>
+    <script src="https://cdn.jsdelivr.net/npm/lz-string@1.5.0/libs/lz-string.min.js"></script>
+    <script>
+      (function () {
+        var errEl = document.getElementById("err");
+        var frame = document.getElementById("frame");
+        if (!errEl || !frame) return;
+
+        var raw = window.location.hash || "";
+        if (raw.charAt(0) === "#") raw = raw.slice(1);
+
+        var params = new URLSearchParams(raw);
+        var d = params.get("d");
+        if (!d) {
+          errEl.textContent =
+            "Kein Artefakt in der URL (Hash-Parameter „d“ fehlt). Bitte den vollständigen Share-Link verwenden.";
+          errEl.hidden = false;
+          return;
+        }
+
+        try {
+          var html = window.LZString.decompressFromEncodedURIComponent(d);
+          if (!html) throw new Error("empty");
+          frame.srcdoc = html;
+          frame.removeAttribute("hidden");
+        } catch {
+          errEl.textContent =
+            "Das Artefakt konnte nicht geladen werden (Link beschädigt, falsches Format oder Inhalt zu groß).";
+          errEl.hidden = false;
+        }
+      })();
+    </script>
+  </body>
+</html>
